@@ -10,7 +10,7 @@ export default class App extends React.Component {
     return (
       <Container>
         <AppHeader />
-        <Content>
+        <Content padder>
           <Counter />
         </Content>
         <AppFooter />

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Text, View, Button, Alert } from "react-native";
-import { styles } from "../styles";
+import { View, Alert } from "react-native";
+import { Content, Button, Text } from "native-base";
 
 export default class Counter extends Component {
   state = {
@@ -35,17 +35,13 @@ export default class Counter extends Component {
   render() {
     return (
       <View>
-        <View style={styles.counterContainer}>
-          <Text style={styles.counter}>{this.state.count}</Text>
-        </View>
-        <View style={styles.buttonGroup}>
-          <View style={styles.incrementButton}>
-            <Button color="white" title="+" onPress={this.increment} />
-          </View>
-          <View style={styles.decreaseButton}>
-            <Button color="white" title="-" onPress={this.decrease} />
-          </View>
-        </View>
+        <Text>{this.state.count}</Text>
+        <Button block success onPress={this.increment}>
+          <Text>+</Text>
+        </Button>
+        <Button block danger onPress={this.decrease}>
+          <Text>-</Text>
+        </Button>
       </View>
     );
   }
