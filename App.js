@@ -1,16 +1,20 @@
 import React from "react";
-import { Text, View } from "react-native";
-import { styles } from "./styles";
-import Title from "./components/Title";
+import { Container, Content } from "native-base";
+
 import Counter from "./components/Counter";
+import AppHeader from "./components/AppHeader";
+import AppFooter from "./components/AppFooter";
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.app}>
-        <Title />
-        <Counter />
-      </View>
+      <Container>
+        <AppHeader />
+        <Content>
+          <Counter />
+        </Content>
+        <AppFooter />
+      </Container>
     );
   }
 }
