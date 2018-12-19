@@ -1,19 +1,23 @@
 import React, { Component } from "react";
 import { View, Alert } from "react-native";
+import { connect } from "react-redux";
 import { Content, Button, Text } from "native-base";
+import { increaseCount, decreaseCount } from "../redux/actions";
 
-export default class Counter extends Component {
-  state = {
-    count: 0
-  };
+const mapStateToProps = state => {
+  return { count: state.count };
+};
 
+class Counter extends Component {
   decrease = () => {
-    this.setState({ count: this.state.count - 1 });
+    const { count, dispatch } = this.props;
+    dispatch(decreaseCount());
   };
 
   increment = () => {
-    this.setState({ count: this.state.count + 1 });
-    const { count } = this.state;
+    const { count, dispatch } = this.props;
+    dispatch(increaseCount());
+
     switch (count) {
       case 2:
         Alert.alert("💧 Drink Water 💧");
@@ -35,7 +39,7 @@ export default class Counter extends Component {
   render() {
     return (
       <View>
-        <Text>{this.state.count}</Text>
+        <Text>{this.props.count}</Text>
         <Button block success onPress={this.increment}>
           <Text>+</Text>
         </Button>
@@ -46,3 +50,5 @@ export default class Counter extends Component {
     );
   }
 }
+
+export default connect(mapStateToProps)(Counter);
