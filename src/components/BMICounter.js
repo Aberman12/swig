@@ -6,7 +6,7 @@ import { Actions } from "react-native-router-flux";
 import { saveBW } from "../redux/actions";
 
 const mapStateToProps = state => {
-  return { userBW: state.number };
+  return { userBW: state.userBW };
 };
 
 class getBW extends Component {
@@ -15,7 +15,11 @@ class getBW extends Component {
   }
 
   goToNextPage() {
-    Actions.advancedCounter();
+    if (this.props.userBW) {
+      Actions.advancedCounter();
+    } else {
+      Alert.alert("Please enter your weight in lbs first!");
+    }
   }
   render() {
     return (
@@ -29,7 +33,7 @@ class getBW extends Component {
           <CardSection>
             <Input
               label="Body Weight: "
-              placeholder="ex: 145"
+              placeholder="(in pounds)"
               onChangeText={this.onBWChange.bind(this)}
               value={this.props.BW}
               placeholder="ex: 145"

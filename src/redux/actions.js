@@ -9,6 +9,7 @@ export const decreaseCount = () => {
 };
 
 export const saveBW = number => {
+  console.log("number in actions: ", number);
   return {
     type: SAVE_BW,
     payload: number
